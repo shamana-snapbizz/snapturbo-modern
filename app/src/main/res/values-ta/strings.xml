@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ஸ்நாப் டர்போ</string>
+    <string name="no_internet">இணைய இணைப்பு இல்லை</string>
+    <string name="check_internet">தயவுசெய்து உங்கள் இணைய இணைப்பை சரிபார்க்கவும்.</string>
+    <string name="ok">சரி</string>
+    <string name="device_id">डசாதன ஐடி :</string>
+    <string name="get_start">தொடங்குங்கள்</string>
+    <string name="welcome_msg">SnapBizz-க்கு உங்களை வரவேற்கிறோம் - வாருங்கள் தொடங்கலாம்</string>
+    <string name="mobile_no">உங்கள் மொபைல் எண்ணை உள்ளிடவும்</string>
+    <string name="enter_otp">OTP-ஐ உள்ளிடவும்</string>
+    <string name="resend_otp">OTP-ஐ மீண்டும் அனுப்பவும்</string>
+    <string name="submit">சமர்ப்பிக்கவும்</string>
+    <string name="get_otp">OTP-ஐப் பெறுக</string>
+    <string name="registration">பதிவு</string>
+    <string name="billing_monitor">பில்லிங் மானிட்டர்</string>
+    <string name="my_store">எனது கடை</string>
+    <string name="sent_otp">Welcome SnapBizz - நாங்கள் OTP ஐ அனுப்பியுள்ளோம் </string>
+</resources>

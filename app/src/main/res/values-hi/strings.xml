@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">स्नैप टर्बो</string>
+    <string name="no_internet">इंटरनेट कनेक्शन नहीं है</string>
+    <string name="check_internet">कृपया अपना इंटरनेट कनेक्शन जांचें।</string>
+    <string name="ok">ठीक है</string>
+    <string name="device_id">डिवाइस आईडी :</string>
+    <string name="get_start">शुरू करें</string>
+    <string name="welcome_msg">SnapBizz में आपका स्वागत है - आइए शुरू करें</string>
+    <string name="mobile_no">अपना मोबाइल नंबर दर्ज करें</string>
+    <string name="enter_otp">ओटीपी (OTP) दर्ज करें</string>
+    <string name="resend_otp">ओटीपी पुनः भेजें</string>
+    <string name="submit">सबमिट करें</string>
+    <string name="get_otp">ओटीपी प्राप्त करें</string>
+    <string name="registration">पंजीकरण</string>
+    <string name="billing_monitor">बिलिंग मॉनिटर</string>
+    <string name="my_store">मेरा स्टोर</string>
+    <string name="sent_otp">Welcome SnapBizz - हमने ओटीपी भेज दिया है </string>
+
+</resources>

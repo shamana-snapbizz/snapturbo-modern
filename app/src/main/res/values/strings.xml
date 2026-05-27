@@ -1,3 +1,59 @@
 <resources>
     <string name="app_name">SnapTurbo</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="check_internet">Please check your Internet Connection.</string>
+    <string name="ok">OK</string>
+    <string name="device_id">Device id : </string>
+    <string name="get_start">Get Started</string>
+    <string name="welcome_msg">Welcome SnapBizz - Let\'s get Started</string>
+    <string name="mobile_no">Enter Your Mobile Number</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="submit">Submit</string>
+    <string name="get_otp">Get Otp</string>
+    <string name="registration">Registration</string>
+    <string name="billing_monitor">Billing Monitor</string>
+    <string name="my_store">My Store</string>
+    <string name="sent_otp">Welcome SnapBizz - We have sent the OTP on </string>
+
+    <!-- Registration Screen -->
+
+    <string name="snapbizz_registration">SNAPBIZZ REGISTRATION</string>
+
+    <string name="as_multipos_client">As MultiPOS Client?</string>
+    <string name="extensions">Extensions</string>
+    <string name="select_language">Select Language</string>
+    <string name="pos_id">POS ID</string>
+    <string name="skip_download_sync">Skip Download Sync</string>
+
+    <string name="sales_person_details">Sales Person Details</string>
+    <string name="store_details">Store Details</string>
+    <string name="owner_details">Owner Details</string>
+
+    <string name="phone_number">Phone Number</string>
+    <string name="store_name">Store Name</string>
+    <string name="address">Address</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="email">Email</string>
+    <string name="store_phone_number">Store Phone Number</string>
+    <string name="state">State</string>
+    <string name="store_city">Store City</string>
+    <string name="zip_code">Zip Code</string>
+    <string name="gstin_tin_number">GSTIN/TIN Number</string>
+
+    <string name="terms_and_conditions">Terms and Conditions</string>
+
+    <string name="terms_prefix">
+    Click checkbox to indicate that you have read and agree to the terms presented in the
+</string>
+
+    <string name="terms_suffix">agreement</string>
+
+    <string name="accept">ACCEPT</string>
+    <string name="deny">DENY</string>
+    <string name="agree">AGREE</string>
+    <string name="cancel">CANCEL</string>
+
+    <string name="registering">REGISTERING...</string>
+
 </resources>

@@ -1,0 +1,189 @@
+@startuml
+title SnapTurbo - Skeleton Architecture Diagram
+
+skinparam packageStyle rectangle
+skinparam componentStyle rectangle
+skinparam shadowing false
+
+' =========================
+' Application Entry
+' =========================
+package "Application Entry" {
+  [SnapApp (Hilt)]
+  [MainActivity]
+}
+
+SnapApp --> MainActivity
+
+' =========================
+' UI Module (Compose)
+' =========================
+package "ui" {
+    package "components" {
+        [SnapText]
+        [Font]
+        [Dialog]
+        [loading]
+    }
+
+    package "navigation" {
+        package "Navigation" {
+           [AppNavGraph        ]
+           [SplashNavGraph     ]
+           [OnBoardingNavGraph ]
+           [DashboardNavGraph  ]
+        }
+    }
+
+    package "theme" {
+        [SnapColor      ]
+        [Theme          ]
+        [Dimens         ]
+        [SnapThemeConfig]
+    }
+}
+
+MainActivity --> AppNavGraph
+
+' =========================
+' Presentation Layer (Screens)
+' =========================
+package "Presentation Layer (Screens)" {
+  [SplashScreen]
+  [LoginScreen]
+  [RegistrationScreen]
+  [DashboardScreen]
+  [BillingScreen]
+  [InventoryScreen]
+  [ReportsScreen]
+  [CustomersScreen]
+}
+
+SplashNavGraph --> SplashScreen
+OnBoardingNavGraph --> LoginScreen
+OnBoardingNavGraph --> RegistrationScreen
+DashboardNavGraph --> DashboardScreen
+
+DashboardScreen --> BillingScreen
+DashboardScreen --> InventoryScreen
+DashboardScreen --> ReportsScreen
+DashboardScreen --> CustomersScreen
+
+' =========================
+' Presentation Layer
+' =========================
+package "Presentation Layer (ViewModel)" {
+  [SplashViewModel]
+  [LoginViewModel]
+  [DashboardViewModel]
+  [InventoryViewModel]
+  [BillingViewModel]
+  [CustomersViewModel]
+}
+
+SplashScreen --> SplashViewModel
+LoginScreen --> LoginViewModel
+DashboardScreen --> DashboardViewModel
+InventoryScreen --> InventoryViewModel
+BillingScreen --> BillingViewModel
+CustomersScreen --> CustomersViewModel
+
+' =========================
+' Domain Layer
+' =========================
+package "Domain Layer (UseCases)" {
+  [StartupUseCase]
+  [BackupUseCase]
+  [OnBoardingUseCase]
+  [DeviceIdUseCase]
+}
+
+SplashViewModel --> StartupUseCase
+StartupUseCase --> BackupUseCase
+StartupUseCase --> DeviceIdUseCase
+LoginViewModel --> OnBoardingUseCase
+LoginViewModel --> [GenerateOtpUseCase]
+LoginViewModel --> [VerifyOtpUseCase]
+
+
+' =========================
+' Data Layer
+' =========================
+package "Data Layer" {
+  [Repository]
+  [RemoteDataSource]
+  [LocalDataSource]
+  [AppDatabase]
+}
+
+Repository --> RemoteDataSource
+Repository --> LocalDataSource
+LocalDataSource --> AppDatabase
+
+' =========================
+' Singleton / Infra
+' =========================
+package "Singleton Infra" {
+  [NetworkConnectivity]
+  [NetworkStatus]
+  [OkHttpClient]
+  [Retrofit]
+  [AppDataStore]
+}
+
+RemoteDataSource --> Retrofit
+Retrofit --> OkHttpClient
+MainActivity --> NetworkConnectivity
+NetworkConnectivity --> NetworkStatus
+LocalDataSource --> AppDataStore
+
+' =========================
+' Dependency Injection (Hilt)
+' =========================
+package "Dependency Injection (Hilt)" {
+  [AppModule]
+  [NetworkModule]
+  [DataStoreModule]
+  [BackupModule]
+  [PermissionModule]
+  [StartupModule]
+  [ResourceModule]
+}
+
+AppModule --> Repository
+NetworkModule --> Retrofit
+NetworkModule --> OkHttpClient
+DataStoreModule --> AppDataStore
+BackupModule --> BackupUseCase
+PermissionModule --> SplashViewModel
+StartupModule --> StartupUseCase
+
+' =========================
+' Common / Utils
+' =========================
+package "Commons " {
+    package "Utils"{
+        [DeviceIdUseCase]
+        [Extenstions]
+        [SnapCommonUtils]
+        [SnapConstants]
+        [ResourceModule]
+    }
+    package "network"{
+        [authenticator]
+        [atuhinterceptors]
+    }
+     package "permissions"{
+            [data]
+            [domain]
+            [Ui]
+      }
+  [database]
+  [datastore]
+  [di]
+  [receivers]
+  [services]
+  [Firebase]
+}
+
+@enduml

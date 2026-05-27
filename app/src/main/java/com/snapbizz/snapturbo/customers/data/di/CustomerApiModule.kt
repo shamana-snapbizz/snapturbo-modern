@@ -1,5 +1,7 @@
 package com.snapbizz.snapturbo.customers.data.di
 
+import com.snapbizz.snapturbo.commons.di.AuthenticatedV2Api
+import com.snapbizz.snapturbo.commons.di.PublicV3Api
 import com.snapbizz.snapturbo.customers.data.remote.CustomerApiService
 import dagger.Module
 import dagger.Provides
@@ -14,6 +16,6 @@ object CustomerApiModule {
 
     @Provides
     @Singleton
-    fun provideCustomerApi(retrofit: Retrofit): CustomerApiService =
+    fun provideCustomerApi(@PublicV3Api retrofit: Retrofit): CustomerApiService =
         retrofit.create(CustomerApiService::class.java)
 }
