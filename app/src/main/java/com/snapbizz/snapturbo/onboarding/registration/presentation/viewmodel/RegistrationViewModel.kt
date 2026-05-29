@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.snapbizz.snapturbo.commons.datastore.AppDataStore
 import com.snapbizz.snapturbo.commons.utils.NetworkResult
+import com.snapbizz.snapturbo.onboarding.downloadsync.domain.usecase.DownloadSyncUseCase
 import com.snapbizz.snapturbo.onboarding.login.domain.model.VerifyOtpResult
 import com.snapbizz.snapturbo.onboarding.registration.data.remote.model.RegistrationRequest
 import com.snapbizz.snapturbo.onboarding.registration.domain.usecase.RegistrationUseCase
@@ -21,7 +22,8 @@ import javax.inject.Inject
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
     private val registrationUseCase: RegistrationUseCase,
-    private val appDataStore: AppDataStore
+    private val appDataStore: AppDataStore,
+    private val downloadSyncUseCase: DownloadSyncUseCase
 ) : ViewModel() {
 
     companion object {
@@ -466,10 +468,8 @@ class RegistrationViewModel @Inject constructor(
                     }
 
             )
-
-            _registrationState.value =
+            val registrationResult =
                 registrationUseCase(
-
                     deviceId =
                         appDataStore.deviceIdFlow
                             .firstOrNull().orEmpty(),
@@ -478,7 +478,32 @@ class RegistrationViewModel @Inject constructor(
                         verifyOtpResponse.accessToken.orEmpty(),
 
                     request = request
-                )
+            )
+
+            if (registrationResult is NetworkResult.Success) {
+
+                val syncResult =
+                    downloadSyncUseCase()
+
+                if (syncResult.isSuccess) {
+
+                    _registrationState.value =
+                        NetworkResult.Success(Unit)
+
+                } else {
+
+                    _registrationState.value =
+                        NetworkResult.Error(
+                            syncResult.exceptionOrNull()?.message
+                                ?: "Download sync failed"
+                        )
+                }
+
+            } else {
+
+                _registrationState.value =
+                    registrationResult
+            }
         }
     }
 }

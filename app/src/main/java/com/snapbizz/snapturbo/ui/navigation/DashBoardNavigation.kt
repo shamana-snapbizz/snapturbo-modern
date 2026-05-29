@@ -18,9 +18,10 @@ fun NavGraphBuilder.dashboardNavGraph(
     ) {
         composable(ScreenRoute.Dashboard.Billing.route) {
             BillingScreen(
-            onRegister = {
-                navController.navigate(ScreenRoute.Auth.Registration.route)
-            })
+//            onRegister = {
+//                navController.navigate(ScreenRoute.Auth.Registration.route)
+//            }
+            )
         }
 
         composable(ScreenRoute.Dashboard.Inventory.route) {
