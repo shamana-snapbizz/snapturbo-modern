@@ -16,6 +16,8 @@ import com.snapbizz.snapturbo.onboarding.downloadsync.data.sync.ZipUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.snapbizz.snapturbo.onboarding.downloadsync.data.remote.model.DownloadSyncResponse
+import com.snapbizz.snapturbo.onboarding.login.data.local.dao.UserDao
+import com.snapbizz.snapturbo.onboarding.login.data.local.entity.UserEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -34,6 +36,8 @@ class DownloadSyncRepository @Inject constructor(
     private val customerDao: CustomerDao,
 
     private val inventoryDao: InventoryDao,
+
+    private val userDao: UserDao,
 
     private val fileDownloader: FileDownloader,
 
@@ -86,6 +90,8 @@ class DownloadSyncRepository @Inject constructor(
             syncCustomers(body)
 
             syncInventory(body)
+
+            insertAdminUser()
 
             Result.success(Unit)
 
@@ -220,4 +226,27 @@ class DownloadSyncRepository @Inject constructor(
 
     suspend fun getCustomerCount() =
         customerDao.getCustomerCount()
+
+    private suspend fun insertAdminUser() {
+
+        val existing =
+            userDao.getAdmin()
+
+        if (existing != null) return
+
+        val now =
+            System.currentTimeMillis()
+
+        userDao.insert(
+            UserEntity(
+                username = "admin",
+                password = "admin",
+                name = "admin",
+                roleId = 2,
+                isDisabled = false,
+                createdAt = now,
+                updatedAt = now
+            )
+        )
+    }
 }

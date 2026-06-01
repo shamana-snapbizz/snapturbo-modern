@@ -9,6 +9,7 @@ import com.snapbizz.snapturbo.onboarding.login.presentation.ui.LoginScreen
 import com.snapbizz.snapturbo.onboarding.login.presentation.viewmodel.LanguageViewModel
 import com.snapbizz.snapturbo.onboarding.registration.presentation.ui.RegistrationScreen
 import com.snapbizz.snapturbo.onboarding.registration.presentation.viewmodel.RegistrationViewModel
+import com.snapbizz.snapturbo.onboarding.userlogin.presentation.ui.UserLoginRoute
 
 fun NavGraphBuilder.onboaringNavGraph(
     navController: NavController,
@@ -37,9 +38,23 @@ fun NavGraphBuilder.onboaringNavGraph(
             Log.e("OTP_DEBUG", "Navigating to Registration")
             RegistrationScreen(
                 onDashBoardClick = {
-                    navController.navigate(ScreenRoute.Dashboard.Billing.route)
-                },
+                    navController.navigate(
+                        ScreenRoute.Auth.UserLogin.route
+                    )
+                }
+            )
+        }
 
+        composable(
+            ScreenRoute.Auth.UserLogin.route
+        ) {
+
+            UserLoginRoute(
+                onSuccess = {
+                    navController.navigate(
+                        ScreenRoute.Dashboard.Billing.route
+                    )
+                }
             )
         }
 

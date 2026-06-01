@@ -8,14 +8,17 @@ import com.snapbizz.snapturbo.onboarding.downloadsync.data.local.dao.ProductDao
 import com.snapbizz.snapturbo.onboarding.downloadsync.data.local.entity.CustomerEntity
 import com.snapbizz.snapturbo.onboarding.downloadsync.data.local.entity.InventoryEntity
 import com.snapbizz.snapturbo.onboarding.downloadsync.data.local.entity.ProductEntity
+import com.snapbizz.snapturbo.onboarding.login.data.local.dao.UserDao
+import com.snapbizz.snapturbo.onboarding.login.data.local.entity.UserEntity
 
 @Database(
     entities = [
         ProductEntity::class,
         CustomerEntity::class,
-        InventoryEntity::class
+        InventoryEntity::class,
+        UserEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class SnapTurboDatabase : RoomDatabase() {
@@ -25,4 +28,6 @@ abstract class SnapTurboDatabase : RoomDatabase() {
     abstract fun customerDao(): CustomerDao
 
     abstract fun inventoryDao(): InventoryDao
+
+    abstract fun userDao(): UserDao
 }
