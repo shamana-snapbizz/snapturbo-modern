@@ -3,9 +3,8 @@ package com.snapbizz.snapturbo.ui.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.snapbizz.snapturbo.irctc.navigation.irctcNavigation
 import com.snapbizz.snapturbo.onboarding.login.presentation.viewmodel.LanguageViewModel
-import com.snapbizz.snapturbo.onboarding.login.presentation.viewmodel.LoginViewModel
-import com.snapbizz.snapturbo.onboarding.registration.presentation.viewmodel.RegistrationViewModel
 
 @Composable
 fun AppNavGraph(languageViewModel: LanguageViewModel) {
@@ -21,5 +20,7 @@ fun AppNavGraph(languageViewModel: LanguageViewModel) {
         onboaringNavGraph(navController,languageViewModel)
 
         dashboardNavGraph(navController)
+
+        irctcNavigation(navController)
     }
 }

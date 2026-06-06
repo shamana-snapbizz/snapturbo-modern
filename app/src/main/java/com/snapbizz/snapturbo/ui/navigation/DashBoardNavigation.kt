@@ -5,7 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.snapbizz.snapturbo.dashboard.billing.presentation.ui.BillingScreen
-import com.snapbizz.snapturbo.dashboard.inventory.presentation.ui.InventoryScreen
+import com.snapbizz.snapturbo.irctc.presentation.InventoryScreen
 import com.snapbizz.snapturbo.dashboard.report.presentation.ui.ReportsScreen
 
 
@@ -18,9 +18,11 @@ fun NavGraphBuilder.dashboardNavGraph(
     ) {
         composable(ScreenRoute.Dashboard.Billing.route) {
             BillingScreen(
-//            onRegister = {
-//                navController.navigate(ScreenRoute.Auth.Registration.route)
-//            }
+                onInventoryClick = {
+                    navController.navigate(
+                        ScreenRoute.Dashboard.Inventory.route
+                    )
+                }
             )
         }
 

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -21,7 +22,8 @@ import com.snapbizz.snapturbo.dashboard.billing.presentation.viewmodel.BillingVi
 
 @Composable
 fun BillingScreen(
-    vm: BillingViewModel = hiltViewModel()
+    vm: BillingViewModel = hiltViewModel(),
+    onInventoryClick: () -> Unit
 ) {
 
     LazyColumn(
@@ -164,6 +166,13 @@ fun BillingScreen(
             Spacer(
                 modifier = Modifier.height(24.dp)
             )
+            Button(
+                onClick = {
+                    onInventoryClick()
+                }
+            ) {
+                Text("Inventory")
+            }
         }
     }
 }

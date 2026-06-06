@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.snapbizz.snapturbo.irctc.navigation.IrctcRoute
 import com.snapbizz.snapturbo.onboarding.login.presentation.ui.LoginScreen
 import com.snapbizz.snapturbo.onboarding.login.presentation.viewmodel.LanguageViewModel
 import com.snapbizz.snapturbo.onboarding.registration.presentation.ui.RegistrationScreen
@@ -26,12 +27,6 @@ fun NavGraphBuilder.onboaringNavGraph(
                     navController.navigate(ScreenRoute.Auth.Registration.route)
                 }
             )
-
-            /*LoginScreen (
-                onAuthSuccess = { route ->
-                    navController.navigate(ScreenRoute.Auth.Registration.route)
-                }
-            )*/
         }
 
         composable(ScreenRoute.Auth.Registration.route) {
@@ -52,19 +47,16 @@ fun NavGraphBuilder.onboaringNavGraph(
             UserLoginRoute(
                 onSuccess = {
                     navController.navigate(
-                        ScreenRoute.Dashboard.Billing.route
-                    )
+                        IrctcRoute.Home.route
+                    ) {
+                        popUpTo(
+                            ScreenRoute.Auth.UserLogin.route
+                        ) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
-
-        /*composable(ScreenRoute.Auth.Registration.route) {
-            CustomersScreen(
-
-            )
-        }*/
-        //User Login Screen Admin and Password
-        //POS Test Name
-        //Opening Balance Screen
     }
 }
